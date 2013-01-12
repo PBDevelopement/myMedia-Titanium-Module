@@ -29,6 +29,8 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import <UIKit/UIPopoverController.h>
+
+#import "JSONKit.h"
 // by default, we want to make the camera fullscreen and 
 // these transform values will scale it when we have our own overlay
 
@@ -1472,7 +1474,11 @@ MAKE_SYSTEM_PROP(VIDEO_FINISH_REASON_USER_EXITED,MPMovieFinishReasonUserExited);
 				[dictMeta setObject:imageRefURL forKey:@"path"];
 			}
 			
+			NSString *JSONMeta = [metadata JSONString];
+			
 			[dictionary setObject:dictMeta forKey:@"metadata"];
+			[dictionary setObject:JSONMeta forKey:@"JSONmetadata"];
+
 		} else 
 		{
 			NSLog(@"ASSET was nil");
